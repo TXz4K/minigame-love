@@ -1691,3 +1691,163 @@ h1 {
     transform: scale(1.22) rotate(12deg);
   }
 }
+
+/* Secret girlfriend check-in gate */
+body.is-locked {
+  overflow: hidden;
+}
+
+body.is-locked .app {
+  filter: blur(10px);
+  opacity: 0.18;
+  transform: scale(0.985);
+  pointer-events: none;
+}
+
+.app {
+  transition: filter 420ms ease, opacity 420ms ease, transform 420ms ease;
+}
+
+.login-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right))
+    max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.72), transparent 13rem),
+    linear-gradient(135deg, rgba(255, 247, 238, 0.82), rgba(237, 246, 239, 0.7));
+  backdrop-filter: blur(14px);
+  transition: opacity 420ms ease, visibility 420ms ease, transform 420ms ease;
+}
+
+.login-gate.is-unlocked {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(1.02);
+  pointer-events: none;
+}
+
+.login-card {
+  width: min(460px, 100%);
+  padding: clamp(20px, 6vw, 32px);
+  border: 1px solid rgba(255, 143, 179, 0.28);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(100, 183, 255, 0.16), transparent 10rem),
+    radial-gradient(circle at bottom left, rgba(255, 143, 179, 0.16), transparent 11rem),
+    rgba(255, 253, 249, 0.92);
+  box-shadow:
+    0 26px 80px rgba(71, 49, 35, 0.18),
+    0 0 0 8px rgba(255, 255, 255, 0.28);
+  animation: loginFloat 3.8s ease-in-out infinite;
+}
+
+.login-kicker {
+  margin: 0 0 10px;
+  color: #b35c69;
+  font-weight: 700;
+}
+
+.login-card h1 {
+  margin: 0;
+  color: #2f4f83;
+  font-size: clamp(1.75rem, 8vw, 2.75rem);
+  line-height: 1.18;
+}
+
+.login-copy {
+  margin: 14px 0 20px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.login-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #7e4c53;
+  font-weight: 700;
+}
+
+.login-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.login-row input,
+.login-row button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 16px;
+  font: inherit;
+}
+
+.login-row input {
+  width: 100%;
+  padding: 0 14px;
+  color: var(--ink);
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(45, 37, 36, 0.12);
+}
+
+.login-row input:focus {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 2px rgba(100, 183, 255, 0.72),
+    0 0 0 4px rgba(100, 183, 255, 0.14);
+}
+
+.login-row button {
+  padding: 0 16px;
+  color: #fff;
+  background: linear-gradient(135deg, #64b7ff, #ff8fb3);
+  box-shadow: 0 12px 26px rgba(255, 143, 179, 0.26);
+  cursor: pointer;
+}
+
+.login-hint {
+  min-height: 28px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.login-hint.is-error {
+  color: #c44e68;
+  animation: tinyShake 260ms ease;
+}
+
+@media (max-width: 430px) {
+  .login-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes loginFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes tinyShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  30% {
+    transform: translateX(-5px);
+  }
+
+  70% {
+    transform: translateX(5px);
+  }
+}

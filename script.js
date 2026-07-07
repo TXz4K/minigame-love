@@ -11,10 +11,15 @@ const letterTitle = document.querySelector("#letterTitle");
 const typedMessage = document.querySelector("#typedMessage");
 const letterSignature = document.querySelector("#letterSignature");
 const resetButton = document.querySelector("#resetButton");
+const loginGate = document.querySelector("#loginGate");
+const loginForm = document.querySelector("#loginForm");
+const lovePassword = document.querySelector("#lovePassword");
+const loginHint = document.querySelector("#loginHint");
 
 let foundCount = 0;
 let selectedMood = "";
 let typingTimer = null;
+const loveCodes = new Set(["16มีนาคม2005", "16/03/2005", "16-03-2005", "16032005"]);
 
 const moodLetters = {
   "ชิวมาก": {
@@ -155,3 +160,44 @@ sparks.forEach((spark) => {
 });
 
 resetButton.addEventListener("click", resetGame);
+
+function normalizeLoveCode(value) {
+  return value.trim().replace(/\s+/g, "").replace(/มี.ค./g, "มีนาคม");
+}
+
+function unlockSite() {
+  document.body.classList.remove("is-locked");
+  loginGate.classList.add("is-unlocked");
+  sessionStorage.setItem("minigameLoveUnlocked", "yes");
+}
+
+function lockSite() {
+  if (sessionStorage.getItem("minigameLoveUnlocked") === "yes") {
+    loginGate.classList.add("is-unlocked");
+    return;
+  }
+
+  document.body.classList.add("is-locked");
+  window.setTimeout(() => lovePassword.focus(), 260);
+}
+
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const code = normalizeLoveCode(lovePassword.value);
+
+  if (loveCodes.has(code)) {
+    loginHint.classList.remove("is-error");
+    loginHint.textContent = "รายงานตัวสำเร็จแล้วค่ะ แฟนตัวจริงเข้าได้เลย";
+    unlockSite();
+    launchConfetti();
+    return;
+  }
+
+  loginHint.classList.remove("is-error");
+  void loginHint.offsetWidth;
+  loginHint.classList.add("is-error");
+  loginHint.textContent = "ยังไม่ใช่น้า ลองใส่วันที่แบบ 16 มีนาคม 2005 ดูอีกทีคะ";
+  lovePassword.select();
+});
+
+lockSite();
