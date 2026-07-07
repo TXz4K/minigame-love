@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>กล่องฮีลใจสำหรับคนเก่ง</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient-bg" aria-hidden="true">
+      <span class="ambient-orb orb-1"></span>
+      <span class="ambient-orb orb-2"></span>
+      <span class="ambient-orb orb-3"></span>
+      <span class="ambient-heart heart-1">♡</span>
+      <span class="ambient-heart heart-2">♡</span>
+      <span class="ambient-heart heart-3">♡</span>
+      <span class="ambient-star star-1">✦</span>
+      <span class="ambient-star star-2">✦</span>
+      <span class="ambient-star star-3">✦</span>
+    </div>
+    <main class="app">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">a tiny secret for your internship days</p>
+          <h1 id="page-title">กล่องฮีลใจสำหรับคนเก่ง</h1>
+          <p class="intro">
+            เว็บเล็ก ๆ ที่ทำมาให้ เด็กหญิง โชติกา มีกำลังใจในการลงชุมชน
+          </p>
+          <div class="promise-list" aria-label="จุดเด่นของไอเดีย">
+            <span>เลือกอารมณ์วันนี้</span>
+            <span>จับแสงกำลังใจ</span>
+            <span>เปิดจดหมายลับ</span>
+          </div>
+        </div>
+
+        <section class="phone" aria-label="มินิเกมกล่องฮีลใจ">
+          <header class="game-header">
+            <div>
+              <span class="small-label">surprise progress</span>
+              <strong><span id="score">0</span>/6</strong>
+            </div>
+            <button class="reset-button" id="resetButton" type="button">เริ่มใหม่</button>
+          </header>
+
+          <section class="mood-panel" id="moodPanel">
+            <p class="panel-kicker">ก่อนเปิดกล่องนี้</p>
+            <h2>ลงชุมชนเป็นยังไงบ้างคะ คนฉวย?</h2>
+            <div class="mood-grid">
+              <button type="button" data-mood="ชิวมาก">ชิวมาก</button>
+              <button type="button" data-mood="สบายมาก">สบายมาก</button>
+              <button type="button" data-mood="เหนื่อย">เหนื่อย</button>
+              <button type="button" data-mood="เหนื่อยมาก">เหนื่อยมาก</button>
+            </div>
+          </section>
+
+          <section class="game-card is-locked" id="gameCard">
+            <div class="sky-scene" id="skyScene" aria-label="แตะจับแสงกำลังใจ">
+              <div class="blue-friend" aria-hidden="true">
+                <img class="friend-svg" src="image/stitch.svg" alt="" />
+                <span class="friend-heart">♡</span>
+              </div>
+              <button class="spark spark-1" type="button" data-note="คิดถึงคนฉวย">คิดถึงนะ ฉู้ๆ</button>
+              <button class="spark spark-2" type="button" data-note="มาให้กอดหน่อย">รอให้กอดอยู่หนาา</button>
+              <button class="spark spark-3" type="button" data-note="เธอน่ารักที่สุด">อ้วนน่ารักที่สุด</button>
+              <button class="spark spark-4" type="button" data-note="เหนื่อยก็พักที่ใจผม">เหนื่อยก็พักที่ใจเค้าอิอิ</button>
+              <button class="spark spark-5" type="button" data-note="ภูมิใจในตัวเธอมาก">ภูมิใจในตัวอ้วนมั๊ก</button>
+              <button class="spark spark-6" type="button" data-note="รักนะ เจ้าคนเก่ง">รักนะ ไออ้วน</button>
+              <div class="care-box" id="careBox">
+                <span class="box-lid"></span>
+                <span class="box-body">♡</span>
+              </div>
+            </div>
+            <div class="hint" id="hint">เลือกความรู้สึกก่อน แล้วกล่องจะเริ่มทำงาน</div>
+          </section>
+
+          <section class="light-tray" aria-label="แสงกำลังใจที่เก็บได้">
+            <span class="light-slot"></span>
+            <span class="light-slot"></span>
+            <span class="light-slot"></span>
+            <span class="light-slot"></span>
+            <span class="light-slot"></span>
+            <span class="light-slot"></span>
+          </section>
+
+          <section class="letter" id="letter" hidden>
+            <p class="message-kicker" id="letterKicker">จดหมายลับถูกเปิดแล้ว</p>
+            <h2 id="letterTitle">ถึงคนที่กำลังพยายาม</h2>
+            <p id="typedMessage"></p>
+            <p class="signature" id="letterSignature">จากคนที่อยากเห็นเธอยิ้มได้ แม้วันนี้จะหนักแค่ไหนก็ตาม</p>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
