@@ -1851,3 +1851,153 @@ body.is-locked .app {
     transform: translateX(5px);
   }
 }
+
+/* Extra playful ambient background */
+.ambient-bubble,
+.shooting-star,
+.soft-ribbon {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.ambient-bubble {
+  width: clamp(18px, 5vw, 42px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.72), transparent 22%),
+    radial-gradient(circle at 70% 76%, rgba(100, 183, 255, 0.2), transparent 52%);
+  box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.22);
+  opacity: 0.46;
+  animation: bubbleRise 12s ease-in-out infinite;
+}
+
+.bubble-1 {
+  left: 18%;
+  bottom: -42px;
+}
+
+.bubble-2 {
+  right: 19%;
+  bottom: 18%;
+  width: clamp(14px, 4vw, 32px);
+  animation-delay: -4s;
+  animation-duration: 14s;
+}
+
+.bubble-3 {
+  left: 61%;
+  bottom: -28px;
+  width: clamp(22px, 6vw, 48px);
+  animation-delay: -7s;
+  animation-duration: 16s;
+}
+
+.shooting-star {
+  width: clamp(58px, 14vw, 120px);
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.92), transparent);
+  opacity: 0;
+  transform: rotate(-18deg);
+  animation: shootingStar 7.8s ease-in-out infinite;
+}
+
+.shooting-1 {
+  right: -12%;
+  top: 22%;
+}
+
+.shooting-2 {
+  right: -18%;
+  top: 54%;
+  animation-delay: -3.8s;
+  animation-duration: 9.4s;
+}
+
+.soft-ribbon {
+  width: clamp(240px, 54vw, 620px);
+  height: clamp(70px, 15vw, 150px);
+  border-radius: 999px;
+  opacity: 0.16;
+  filter: blur(10px);
+  transform: rotate(-12deg);
+  animation: ribbonWave 16s ease-in-out infinite;
+}
+
+.ribbon-1 {
+  left: -16%;
+  top: 30%;
+  background: linear-gradient(90deg, transparent, #ff8fb3, #64b7ff, transparent);
+}
+
+.ribbon-2 {
+  right: -22%;
+  bottom: 12%;
+  background: linear-gradient(90deg, transparent, #ffd36e, #ff8fb3, transparent);
+  animation-delay: -7s;
+  transform: rotate(16deg);
+}
+
+.login-gate {
+  background:
+    radial-gradient(circle at 72% 18%, rgba(255, 143, 179, 0.2), transparent 10rem),
+    radial-gradient(circle at 18% 74%, rgba(100, 183, 255, 0.2), transparent 12rem),
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.72), transparent 13rem),
+    linear-gradient(135deg, rgba(255, 247, 238, 0.82), rgba(237, 246, 239, 0.7));
+}
+
+@keyframes bubbleRise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0) scale(0.72);
+  }
+
+  18% {
+    opacity: 0.44;
+  }
+
+  60% {
+    opacity: 0.5;
+    transform: translate3d(22px, -46vh, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-16px, -88vh, 0) scale(1.18);
+  }
+}
+
+@keyframes shootingStar {
+  0%,
+  68% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(-18deg);
+  }
+
+  73% {
+    opacity: 0.86;
+  }
+
+  82%,
+  100% {
+    opacity: 0;
+    transform: translate3d(-120vw, 42vh, 0) rotate(-18deg);
+  }
+}
+
+@keyframes ribbonWave {
+  0%,
+  100% {
+    opacity: 0.11;
+    transform: translate3d(0, 0, 0) rotate(-12deg) scaleX(1);
+  }
+
+  50% {
+    opacity: 0.23;
+    transform: translate3d(8%, -18px, 0) rotate(-8deg) scaleX(1.08);
+  }
+}
