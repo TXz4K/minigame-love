@@ -176,6 +176,25 @@ function normalizeLoveCode(value) {
   return value.trim().replace(/\s+/g, "").replace(/มี.ค./g, "มีนาคม");
 }
 
+function formatDateCode(value) {
+  const digits = value.replace(/\D/g, "").slice(0, 8);
+  const parts = [];
+
+  if (digits.length > 0) {
+    parts.push(digits.slice(0, 2));
+  }
+
+  if (digits.length > 2) {
+    parts.push(digits.slice(2, 4));
+  }
+
+  if (digits.length > 4) {
+    parts.push(digits.slice(4, 8));
+  }
+
+  return parts.join("/");
+}
+
 function unlockSite() {
   document.body.classList.remove("is-locked");
   loginGate.classList.add("is-unlocked");
@@ -207,8 +226,13 @@ loginForm.addEventListener("submit", (event) => {
   loginHint.classList.remove("is-error");
   void loginHint.offsetWidth;
   loginHint.classList.add("is-error");
-  loginHint.textContent = "ยังไม่ใช่น้า ลองใส่วันที่แบบ 16 มีนาคม 2005 ดูอีกทีครับ";
+  loginHint.textContent = "ยังไม่ใช่น้า ลองใส่วันที่แบบ 16032005 ดูอีกทีครับ";
   lovePassword.select();
+});
+
+lovePassword.addEventListener("input", () => {
+  const formatted = formatDateCode(lovePassword.value);
+  lovePassword.value = formatted;
 });
 
 lockSite();
