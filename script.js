@@ -4,6 +4,7 @@ const slots = Array.from(document.querySelectorAll(".light-slot"));
 const score = document.querySelector("#score");
 const hint = document.querySelector("#hint");
 const gameCard = document.querySelector("#gameCard");
+const lightTray = document.querySelector("#lightTray");
 const careBox = document.querySelector("#careBox");
 const letter = document.querySelector("#letter");
 const letterKicker = document.querySelector("#letterKicker");
@@ -56,8 +57,17 @@ function chooseMood(button) {
   selectedMood = button.dataset.mood;
   moodButtons.forEach((moodButton) => moodButton.classList.remove("is-selected"));
   button.classList.add("is-selected");
+  revealGameArea();
   gameCard.classList.remove("is-locked");
   hint.textContent = `รับทราบว่าวันนี้ "${selectedMood}" นะ แตะแสงกำลังใจให้ครบ 6 ดวง`;
+}
+
+function revealGameArea() {
+  gameCard.classList.remove("is-rolled", "is-unrolling");
+  lightTray.classList.remove("is-rolled", "is-unrolling");
+  void gameCard.offsetWidth;
+  gameCard.classList.add("is-unrolling");
+  lightTray.classList.add("is-unrolling");
 }
 
 function collectSpark(spark) {
@@ -140,7 +150,10 @@ function resetGame() {
   letterTitle.textContent = "ถึงคนที่กำลังพยายาม";
   typedMessage.textContent = "";
   letterSignature.textContent = "จากคนที่อยากเห็นอ้วนยิ้มได้ แม้วันนี้จะหนักแค่ไหนก็ตาม";
-  gameCard.classList.add("is-locked");
+  gameCard.classList.add("is-locked", "is-rolled");
+  gameCard.classList.remove("is-unrolling");
+  lightTray.classList.add("is-rolled");
+  lightTray.classList.remove("is-unrolling");
   careBox.classList.remove("is-open");
   window.clearInterval(typingTimer);
 
@@ -187,7 +200,7 @@ loginForm.addEventListener("submit", (event) => {
 
   if (loveCodes.has(code)) {
     loginHint.classList.remove("is-error");
-    loginHint.textContent = "รายงานตัวสำเร็จแล้วค่ะ แฟนตัวจริงเข้าได้เลย";
+    loginHint.textContent = "รายงานตัวสำเร็จแล้วครับ";
     unlockSite();
     launchConfetti();
     return;
@@ -196,7 +209,7 @@ loginForm.addEventListener("submit", (event) => {
   loginHint.classList.remove("is-error");
   void loginHint.offsetWidth;
   loginHint.classList.add("is-error");
-  loginHint.textContent = "ยังไม่ใช่น้า ลองใส่วันที่แบบ 16 มีนาคม 2005 ดูอีกทีคะ";
+  loginHint.textContent = "ยังไม่ใช่น้า ลองใส่วันที่แบบ 16 มีนาคม 2005 ดูอีกทีครับ";
   lovePassword.select();
 });
 
