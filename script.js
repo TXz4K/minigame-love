@@ -22,6 +22,7 @@ let foundCount = 0;
 let selectedMood = "";
 let typingTimer = null;
 const loveCodes = new Set(["16มีนาคม2005", "16/03/2005", "16-03-2005", "16032005"]);
+const smoothScrollOptions = { behavior: "smooth", block: "start" };
 
 const moodLetters = {
   "ชิวมาก": {
@@ -61,6 +62,7 @@ function chooseMood(button) {
   revealGameArea();
   gameCard.classList.remove("is-locked");
   hint.textContent = `รับทราบว่าวันนี้ "${selectedMood}" นะ แตะแสงกำลังใจให้ครบ 6 ดวง`;
+  scrollAfterAction(gameReveal, 260);
 }
 
 function revealGameArea() {
@@ -97,6 +99,7 @@ function revealLetter() {
   letterSignature.textContent = letterData.signature;
   typeMessage(letterData.body);
   launchConfetti();
+  scrollAfterAction(letter, 360);
 }
 
 function popHeart(source) {
@@ -160,6 +163,7 @@ function resetGame() {
   slots.forEach((slot) => {
     slot.classList.remove("is-lit");
   });
+  scrollAfterAction(moodButtons[0], 120);
 }
 
 moodButtons.forEach((button) => {
@@ -193,6 +197,12 @@ function formatDateCode(value) {
   }
 
   return parts.join("/");
+}
+
+function scrollAfterAction(target, delay = 0) {
+  window.setTimeout(() => {
+    target.scrollIntoView(smoothScrollOptions);
+  }, delay);
 }
 
 function unlockSite() {

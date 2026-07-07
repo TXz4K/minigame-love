@@ -2197,3 +2197,204 @@ body.is-locked .app {
     transform: translateY(72px) scaleX(1.04);
   }
 }
+
+/* Final mobile interaction polish */
+@media (max-width: 600px) {
+  :root {
+    --game-width: min(100%, 420px);
+    --scene-height: clamp(410px, 64svh, 470px);
+  }
+
+  .app {
+    width: min(100% - 14px, 1120px);
+    padding-block: 10px 18px;
+  }
+
+  .hero {
+    gap: 14px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.85rem, 9vw, 2.55rem);
+  }
+
+  .intro {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .promise-list {
+    justify-content: center;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .promise-list span {
+    padding: 7px 10px;
+    font-size: 0.76rem;
+  }
+
+  .phone {
+    padding: 10px;
+    border-radius: 24px;
+  }
+
+  .game-header {
+    margin-bottom: 10px;
+  }
+
+  .mood-panel {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .mood-panel h2 {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .mood-grid {
+    gap: 7px;
+  }
+
+  .mood-grid button {
+    min-height: 42px;
+    font-size: 0.88rem;
+  }
+
+  .game-reveal {
+    scroll-margin-top: max(12px, env(safe-area-inset-top));
+  }
+
+  .sky-scene {
+    min-height: var(--scene-height);
+    height: var(--scene-height);
+  }
+
+  .blue-friend {
+    top: clamp(104px, 16svh, 132px);
+    width: clamp(112px, 32vw, 138px);
+  }
+
+  .friend-heart {
+    top: 72%;
+    font-size: 1.7rem;
+  }
+
+  .spark {
+    max-width: 110px;
+    min-height: 38px;
+    padding: 7px 9px;
+    font-size: clamp(0.66rem, 2.55vw, 0.76rem);
+    line-height: 1.25;
+  }
+
+  .spark-1 {
+    left: 10px;
+    top: 14px;
+  }
+
+  .spark-2 {
+    right: 10px;
+    top: 14px;
+  }
+
+  .spark-3 {
+    left: 10px;
+    top: 74px;
+  }
+
+  .spark-4 {
+    right: 10px;
+    top: 74px;
+  }
+
+  .spark-5 {
+    left: 12px;
+    bottom: 22px;
+  }
+
+  .spark-6 {
+    right: 12px;
+    bottom: 22px;
+  }
+
+  .care-box {
+    bottom: clamp(42px, 8svh, 58px);
+    width: clamp(104px, 30vw, 124px);
+  }
+
+  .light-tray {
+    gap: 6px;
+    margin: 10px 0;
+  }
+
+  .light-slot {
+    min-height: 28px;
+  }
+
+  .hint {
+    min-height: 44px;
+    padding: 11px 13px;
+    font-size: 0.88rem;
+  }
+
+  .letter {
+    scroll-margin-top: max(12px, env(safe-area-inset-top));
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --scene-height: clamp(390px, 62svh, 430px);
+  }
+
+  .spark {
+    max-width: 102px;
+    font-size: 0.62rem;
+  }
+
+  .blue-friend {
+    top: clamp(108px, 17svh, 126px);
+    width: clamp(104px, 31vw, 124px);
+  }
+
+  .care-box {
+    bottom: 38px;
+    width: 104px;
+  }
+
+  .box-lid,
+  .box-body {
+    border-radius: 14px;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 600px) {
+  :root {
+    --scene-height: 380px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .promise-list {
+    display: none;
+  }
+
+  .blue-friend {
+    top: 96px;
+    width: 108px;
+  }
+
+  .spark-3,
+  .spark-4 {
+    top: 67px;
+  }
+}
