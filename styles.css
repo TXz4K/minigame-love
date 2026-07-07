@@ -2083,3 +2083,117 @@ body.is-locked .app {
     transform: translateY(58px) scaleY(1);
   }
 }
+
+/* Smoother single-piece carpet reveal */
+.game-reveal {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  margin-top: 12px;
+  opacity: 1;
+  transition:
+    grid-template-rows 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 520ms ease,
+    margin-top 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.game-reveal-inner {
+  min-height: 0;
+  overflow: hidden;
+  transform-origin: top center;
+  transition:
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 650ms ease,
+    opacity 520ms ease;
+}
+
+.game-reveal.is-rolled {
+  grid-template-rows: 0fr;
+  margin-top: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-reveal.is-rolled .game-reveal-inner {
+  opacity: 0;
+  transform: translateY(-22px) scale(0.985);
+  filter: blur(8px);
+}
+
+.game-reveal.is-unrolling::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 0;
+  z-index: 8;
+  height: 42px;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0)),
+    linear-gradient(180deg, rgba(100, 183, 255, 0.24), rgba(255, 143, 179, 0));
+  box-shadow: 0 14px 30px rgba(100, 183, 255, 0.18);
+  pointer-events: none;
+  animation: softRollLip 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.game-reveal.is-unrolling .game-card {
+  animation: softSceneArrive 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.game-reveal.is-unrolling .light-tray {
+  animation: softSceneArrive 620ms cubic-bezier(0.16, 1, 0.3, 1) 170ms both;
+}
+
+.game-card.is-rolled,
+.light-tray.is-rolled,
+.game-card.is-unrolling,
+.light-tray.is-unrolling {
+  max-height: none;
+  margin-block: revert;
+  opacity: 1;
+  overflow: visible;
+  transform: none;
+  pointer-events: auto;
+  animation: none;
+}
+
+@keyframes softSceneArrive {
+  0% {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.985);
+    filter: blur(8px);
+  }
+
+  55% {
+    opacity: 1;
+    filter: blur(1px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes softRollLip {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scaleX(0.72);
+  }
+
+  35% {
+    opacity: 0.9;
+  }
+
+  78% {
+    opacity: 0.36;
+    transform: translateY(54px) scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(72px) scaleX(1.04);
+  }
+}

@@ -82,34 +82,38 @@
             </div>
           </section>
 
-          <section class="game-card is-locked is-rolled" id="gameCard">
-            <div class="sky-scene" id="skyScene" aria-label="แตะจับแสงกำลังใจ">
-              <div class="blue-friend" aria-hidden="true">
-                <img class="friend-svg" src="image/stitch.svg" alt="" />
-                <span class="friend-heart">♡</span>
-              </div>
-              <button class="spark spark-1" type="button" data-note="คิดถึงคนฉวย">คิดถึงนะ ฉู้ๆ</button>
-              <button class="spark spark-2" type="button" data-note="มาให้กอดหน่อย">รอให้กอดอยู่หนาา</button>
-              <button class="spark spark-3" type="button" data-note="เธอน่ารักที่สุด">อ้วนน่ารักที่สุด</button>
-              <button class="spark spark-4" type="button" data-note="เหนื่อยก็พักที่ใจผม">เหนื่อยก็พักที่ใจเค้าอิอิ</button>
-              <button class="spark spark-5" type="button" data-note="ภูมิใจในตัวเธอมาก">ภูมิใจในตัวอ้วนมั๊ก</button>
-              <button class="spark spark-6" type="button" data-note="รักนะ เจ้าคนเก่ง">รักนะ ไออ้วน</button>
-              <div class="care-box" id="careBox">
-                <span class="box-lid"></span>
-                <span class="box-body">♡</span>
+          <div class="game-reveal is-rolled" id="gameReveal">
+            <div class="game-reveal-inner">
+              <section class="game-card is-locked" id="gameCard">
+                <div class="sky-scene" id="skyScene" aria-label="แตะจับแสงกำลังใจ">
+                  <div class="blue-friend" aria-hidden="true">
+                    <img class="friend-svg" src="image/stitch.svg" alt="" />
+                    <span class="friend-heart">♡</span>
+                  </div>
+                  <button class="spark spark-1" type="button" data-note="คิดถึงคนฉวย">คิดถึงนะ ฉู้ๆ</button>
+                  <button class="spark spark-2" type="button" data-note="มาให้กอดหน่อย">รอให้กอดอยู่หนาา</button>
+                  <button class="spark spark-3" type="button" data-note="เธอน่ารักที่สุด">อ้วนน่ารักที่สุด</button>
+                  <button class="spark spark-4" type="button" data-note="เหนื่อยก็พักที่ใจผม">เหนื่อยก็พักที่ใจเค้าอิอิ</button>
+                  <button class="spark spark-5" type="button" data-note="ภูมิใจในตัวเธอมาก">ภูมิใจในตัวอ้วนมั๊ก</button>
+                  <button class="spark spark-6" type="button" data-note="รักนะ เจ้าคนเก่ง">รักนะ ไออ้วน</button>
+                  <div class="care-box" id="careBox">
+                    <span class="box-lid"></span>
+                    <span class="box-body">♡</span>
+                  </div>
+                </div>
+                <div class="hint" id="hint">เลือกความรู้สึกก่อน แล้วกล่องจะเริ่มทำงาน</div>
+              </section>
+
+              <section class="light-tray" id="lightTray" aria-label="แสงกำลังใจที่เก็บได้">
+                <span class="light-slot"></span>
+                <span class="light-slot"></span>
+                <span class="light-slot"></span>
+                <span class="light-slot"></span>
+                <span class="light-slot"></span>
+                <span class="light-slot"></span>
+              </section>
               </div>
             </div>
-            <div class="hint" id="hint">เลือกความรู้สึกก่อน แล้วกล่องจะเริ่มทำงาน</div>
-          </section>
-
-          <section class="light-tray is-rolled" id="lightTray" aria-label="แสงกำลังใจที่เก็บได้">
-            <span class="light-slot"></span>
-            <span class="light-slot"></span>
-            <span class="light-slot"></span>
-            <span class="light-slot"></span>
-            <span class="light-slot"></span>
-            <span class="light-slot"></span>
-          </section>
 
           <section class="letter" id="letter" hidden>
             <p class="message-kicker" id="letterKicker">จดหมายลับถูกเปิดแล้ว</p>

@@ -3,6 +3,7 @@ const sparks = Array.from(document.querySelectorAll(".spark"));
 const slots = Array.from(document.querySelectorAll(".light-slot"));
 const score = document.querySelector("#score");
 const hint = document.querySelector("#hint");
+const gameReveal = document.querySelector("#gameReveal");
 const gameCard = document.querySelector("#gameCard");
 const lightTray = document.querySelector("#lightTray");
 const careBox = document.querySelector("#careBox");
@@ -63,11 +64,9 @@ function chooseMood(button) {
 }
 
 function revealGameArea() {
-  gameCard.classList.remove("is-rolled", "is-unrolling");
-  lightTray.classList.remove("is-rolled", "is-unrolling");
-  void gameCard.offsetWidth;
-  gameCard.classList.add("is-unrolling");
-  lightTray.classList.add("is-unrolling");
+  gameReveal.classList.remove("is-rolled", "is-unrolling");
+  void gameReveal.offsetWidth;
+  gameReveal.classList.add("is-unrolling");
 }
 
 function collectSpark(spark) {
@@ -150,10 +149,9 @@ function resetGame() {
   letterTitle.textContent = "ถึงคนที่กำลังพยายาม";
   typedMessage.textContent = "";
   letterSignature.textContent = "จากคนที่อยากเห็นอ้วนยิ้มได้ แม้วันนี้จะหนักแค่ไหนก็ตาม";
-  gameCard.classList.add("is-locked", "is-rolled");
-  gameCard.classList.remove("is-unrolling");
-  lightTray.classList.add("is-rolled");
-  lightTray.classList.remove("is-unrolling");
+  gameCard.classList.add("is-locked");
+  gameReveal.classList.add("is-rolled");
+  gameReveal.classList.remove("is-unrolling");
   careBox.classList.remove("is-open");
   window.clearInterval(typingTimer);
 
